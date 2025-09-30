@@ -1,0 +1,18 @@
+{
+  "darkMode": "class",
+  "theme": {
+    "extend": {
+      "colors": {
+        "pf-blue": "#0f172a",
+        "pf-mid": "#22243a",
+        "pf-purple": "#6b21a8",
+        "pf-teal": "#06b6d4",
+        "pf-rose": "#6b2631"
+      },
+      "fontFamily": {
+        "sans": ["Inter", "ui-sans-serif", "system-ui"]
+      }
+    }
+  },
+  "plugins": []
+}

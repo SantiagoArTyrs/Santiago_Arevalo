@@ -38,7 +38,7 @@ const Hero: FC<Props> = ({ lang }) => {
   };
 
   return (
-    <section className="relative flex flex-col items-center justify-center h-screen text-center overflow-hidden">
+    <section id ="hero" className="relative flex flex-col items-center justify-center h-screen text-center overflow-hidden">
       {/* Fondo animado */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-purple-900 to-gray-900 animate-gradient bg-[length:200%_200%]" />
 

@@ -65,7 +65,7 @@ const Experience: FC<Props> = ({ lang }) => {
   }[lang];
 
   return (
-    <section id="experience" className="relative py-20 px-6 md:px-20">
+    <section id="experience" className="min-h-screen relative py-70 px-6 md:px-20">
       {/* Título */}
       <motion.h2
         className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent"

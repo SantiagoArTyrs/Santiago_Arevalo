@@ -17,21 +17,21 @@ const Testimonials: FC<Props> = ({ lang }) => {
           role: "Gerente de Proyecto",
           quote:
             "Trabajar con él fue una experiencia increíble. Siempre encuentra soluciones innovadoras.",
-          img: "/avatar1.png", 
+          img: "/img1.jpg",
         },
         {
           name: "Carlos Pérez",
           role: "Ingeniero de Software",
           quote:
             "Su habilidad para combinar diseño y código hace que cada proyecto brille.",
-          img: "/avatar2.png",
+          img: "/img2.jpg",
         },
         {
           name: "Ana Rodríguez",
           role: "CTO en TechWave",
           quote:
             "Un profesional apasionado y muy confiable. Entrega resultados impecables.",
-          img: "/avatar3.png",
+          img: "/img3.jpg",
         },
       ],
     },
@@ -39,32 +39,32 @@ const Testimonials: FC<Props> = ({ lang }) => {
       title: "Testimonials",
       items: [
         {
-          name: "Laura Gómez",
+          name: "Laura Bastidas",
           role: "Project Manager",
           quote:
             "Working with him was an amazing experience. Always finds innovative solutions.",
-          img: "/avatar1.png",
+          img: "/img1.jpg",
         },
         {
           name: "Carlos Pérez",
           role: "Software Engineer",
           quote:
             "His ability to merge design and code makes every project shine.",
-          img: "/avatar2.png",
+          img: "/img2.jpg",
         },
         {
           name: "Ana Rodríguez",
           role: "CTO at TechWave",
           quote:
             "A passionate and reliable professional. Delivers impeccable results.",
-          img: "/avatar3.png",
+          img: "/img3.jpg",
         },
       ],
     },
   }[lang];
 
   return (
-    <section id="testimonials" className="relative py-20 px-6 md:px-20 text-center">
+    <section id="testimonials" className="relative py-15 px-6 md:px-20 text-center">
       <motion.h2
         className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent mb-12"
         initial={{ opacity: 0, y: -20 }}

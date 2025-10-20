@@ -46,7 +46,7 @@ const Navbar: FC<Props> = ({ lang, setLang, toggleTheme, theme }) => {
         <div className="md:hidden mt-2 px-4">
           <nav className="bg-black/40 backdrop-blur-sm p-4 rounded-lg space-y-3">
             <a href="#hero" className="block">Home</a>
-            <a href="#about" className="block">About</a>
+            <a href="#skills" className="block">Skills</a>
             <a href="#projects" className="block">Projects</a>
             <a href="#testimonials" className="block">Testimonials</a>
             <a href="#experience" className="block">Experience</a>

@@ -12,38 +12,38 @@ const Skills: FC<Props> = ({ lang }) => {
   const texts = {
     es: {
       title: "Mis Habilidades",
-      desc: "Estas son algunas de las habilidades técnicas y blandas que me definen como desarrollador y persona.",
+      desc: "Estas son algunas de las tecnologías y habilidades que uso y disfruto dominar.",
       hard: "Habilidades Técnicas",
       soft: "Habilidades Blandas",
       hardSkills: [
-        { icon: <Code />, label: "JavaScript / TypeScript", level: 90 },
-        { icon: <Cpu />, label: "Node.js / Express", level: 85 },
-        { icon: <Globe />, label: "React / Next.js", level: 88 },
-        { icon: <Zap />, label: "IA & Machine Learning", level: 70 },
+        { icon: <Code size={36} />, label: "JavaScript / TypeScript" },
+        { icon: <Cpu size={36} />, label: "Node.js / Express" },
+        { icon: <Globe size={36} />, label: "React / Next.js" },
+        { icon: <Zap size={36} />, label: "IA & Machine Learning" },
       ],
       softSkills: [
-        { icon: <Users />, label: "Trabajo en equipo", level: 95 },
-        { icon: <Lightbulb />, label: "Resolución de problemas", level: 90 },
-        { icon: <Zap />, label: "Adaptabilidad", level: 85 },
-        { icon: <Cpu />, label: "Pensamiento crítico", level: 88 },
+        { icon: <Users size={36} />, label: "Trabajo en equipo" },
+        { icon: <Lightbulb size={36} />, label: "Resolución de problemas" },
+        { icon: <Zap size={36} />, label: "Adaptabilidad" },
+        { icon: <Cpu size={36} />, label: "Pensamiento crítico" },
       ],
     },
     en: {
       title: "My Skills",
-      desc: "These are some of the technical and soft skills that define me as a developer and as a person.",
+      desc: "These are some of the technologies and skills I use and enjoy mastering.",
       hard: "Technical Skills",
       soft: "Soft Skills",
       hardSkills: [
-        { icon: <Code />, label: "JavaScript / TypeScript", level: 90 },
-        { icon: <Cpu />, label: "Node.js / Express", level: 85 },
-        { icon: <Globe />, label: "React / Next.js", level: 88 },
-        { icon: <Zap />, label: "AI & Machine Learning", level: 70 },
+        { icon: <Code size={36} />, label: "JavaScript / TypeScript" },
+        { icon: <Cpu size={36} />, label: "Node.js / Express" },
+        { icon: <Globe size={36} />, label: "React / Next.js" },
+        { icon: <Zap size={36} />, label: "AI & Machine Learning" },
       ],
       softSkills: [
-        { icon: <Users />, label: "Teamwork", level: 95 },
-        { icon: <Lightbulb />, label: "Problem Solving", level: 90 },
-        { icon: <Zap />, label: "Adaptability", level: 85 },
-        { icon: <Cpu />, label: "Critical Thinking", level: 88 },
+        { icon: <Users size={36} />, label: "Teamwork" },
+        { icon: <Lightbulb size={36} />, label: "Problem Solving" },
+        { icon: <Zap size={36} />, label: "Adaptability" },
+        { icon: <Cpu size={36} />, label: "Critical Thinking" },
       ],
     },
   }[lang];
@@ -76,58 +76,44 @@ const Skills: FC<Props> = ({ lang }) => {
       </motion.p>
 
       {/* Hard Skills */}
-      <div className="w-full max-w-4xl mb-12">
-        <h3 className="text-2xl font-semibold mb-6">{texts.hard}</h3>
-        <div className="space-y-6">
+      <div className="w-full max-w-5xl mb-16">
+        <h3 className="text-2xl font-semibold mb-8 text-center">{texts.hard}</h3>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 justify-items-center">
           {texts.hardSkills.map((skill, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
               viewport={{ once: true }}
+              className="flex flex-col items-center text-center hover:scale-105 transition-transform duration-300"
             >
-              <div className="flex items-center gap-3 mb-2">
-                <span className="text-pink-400">{skill.icon}</span>
-                <span className="font-medium">{skill.label}</span>
+              <div className="bg-white/10 p-4 rounded-2xl mb-3 text-cyan-400">
+                {skill.icon}
               </div>
-              <div className="w-full h-3 bg-white/20 rounded-full overflow-hidden">
-                <motion.div
-                  initial={{ width: 0 }}
-                  whileInView={{ width: `${skill.level}%` }}
-                  transition={{ duration: 1, delay: i * 0.2 }}
-                  className="h-3 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-full"
-                />
-              </div>
+              <span className="font-medium text-gray-200">{skill.label}</span>
             </motion.div>
           ))}
         </div>
       </div>
 
       {/* Soft Skills */}
-      <div className="w-full max-w-4xl">
-        <h3 className="text-2xl font-semibold mb-6">{texts.soft}</h3>
-        <div className="space-y-6">
+      <div className="w-full max-w-5xl">
+        <h3 className="text-2xl font-semibold mb-8 text-center">{texts.soft}</h3>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 justify-items-center">
           {texts.softSkills.map((skill, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
               viewport={{ once: true }}
+              className="flex flex-col items-center text-center hover:scale-105 transition-transform duration-300"
             >
-              <div className="flex items-center gap-3 mb-2">
-                <span className="text-blue-400">{skill.icon}</span>
-                <span className="font-medium">{skill.label}</span>
+              <div className="bg-white/10 p-4 rounded-2xl mb-3 text-purple-400">
+                {skill.icon}
               </div>
-              <div className="w-full h-3 bg-white/20 rounded-full overflow-hidden">
-                <motion.div
-                  initial={{ width: 0 }}
-                  whileInView={{ width: `${skill.level}%` }}
-                  transition={{ duration: 1, delay: i * 0.2 }}
-                  className="h-3 bg-gradient-to-r from-pink-400 to-yellow-500 rounded-full"
-                />
-              </div>
+              <span className="font-medium text-gray-200">{skill.label}</span>
             </motion.div>
           ))}
         </div>

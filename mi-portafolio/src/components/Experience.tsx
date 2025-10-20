@@ -80,13 +80,15 @@ const Experience: FC<Props> = ({ lang }) => {
       {/* Timeline */}
       <div className="relative max-w-4xl mx-auto">
         {/* Línea central animada */}
-        <motion.div
-          className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-cyan-500 via-blue-600 to-purple-600"
-          initial={{ scaleY: 0 }}
-          whileInView={{ scaleY: 1 }}
-          transition={{ duration: 1.2 }}
-          viewport={{ once: true }}
-        />
+        {/* Línea central animada (solo visible en pantallas medianas o mayores) */}
+<motion.div
+  className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-cyan-500 via-blue-600 to-purple-600"
+  initial={{ scaleY: 0 }}
+  whileInView={{ scaleY: 1 }}
+  transition={{ duration: 1.2 }}
+  viewport={{ once: true }}
+/>
+
 
         <div className="space-y-16">
           {texts.studies.map((item, i) => (

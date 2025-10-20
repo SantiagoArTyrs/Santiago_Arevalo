@@ -41,7 +41,7 @@ const Footer: FC<Props> = ({ lang }) => {
         {/* Redes sociales */}
         <div className="flex gap-6 text-2xl">
           <a
-            href="https://github.com/tuusuario"
+            href="https://github.com/SantiagoArTyrs"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-white transition"
@@ -49,7 +49,7 @@ const Footer: FC<Props> = ({ lang }) => {
             <FaGithub />
           </a>
           <a
-            href="https://linkedin.com/in/tuusuario"
+            href="https://www.linkedin.com/in/s-a-3ab9a638b/"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-cyan-400 transition"
@@ -57,7 +57,7 @@ const Footer: FC<Props> = ({ lang }) => {
             <FaLinkedin />
           </a>
           <a
-            href="https://instagram.com/tuusuario"
+            href=""
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-pink-500 transition"
@@ -65,7 +65,7 @@ const Footer: FC<Props> = ({ lang }) => {
             <FaInstagram />
           </a>
           <a
-            href="https://x.com/tuusuario"
+            href=""
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-purple-500 transition"

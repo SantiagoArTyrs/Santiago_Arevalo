@@ -1,10 +1,18 @@
 "use client";
 
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 type Props = {
   lang: "es" | "en";
+};
+
+type Particle = {
+  width: number;
+  height: number;
+  top: string;
+  left: string;
+  duration: number;
 };
 
 const Hero: FC<Props> = ({ lang }) => {
@@ -14,7 +22,8 @@ const Hero: FC<Props> = ({ lang }) => {
       title: "Santiago Arevalo",
       handle: "TyrSAr",
       subtitle: "FullStack Developer",
-      slogan: "De lo pequeño se construye lo grande. — Construyo software, IA y productos con alma.",
+      slogan:
+        "De lo pequeño se construye lo grande. — Construyo software, IA y productos con alma.",
       cv: "CV",
       projects: "Ver proyectos",
     },
@@ -23,43 +32,53 @@ const Hero: FC<Props> = ({ lang }) => {
       title: "Santiago Arevalo",
       handle: "TyrSAr",
       subtitle: "FullStack Developer",
-      slogan: "From small pieces, greatness grows. — I build software, AI, and products with soul.",
+      slogan:
+        "From small pieces, greatness grows. — I build software, AI, and products with soul.",
       cv: "Resume",
       projects: "View projects",
     },
-  }[lang] ?? {
-    hi: "HELLO WORLD, I am",
-    title: "Santiago Arevalo",
-    handle: "TyrSAr",
-    subtitle: "FullStack Developer",
-    slogan: "From small pieces, greatness grows.",
-    cv: "Resume",
-    projects: "View projects",
-  };
+  }[lang];
+
+  // 👇 Generar las partículas de forma estable solo una vez en el cliente
+  const [particles, setParticles] = useState<Particle[]>([]);
+
+  useEffect(() => {
+    const newParticles = [...Array(25)].map(() => ({
+      width: Math.random() * 8 + 4,
+      height: Math.random() * 8 + 4,
+      top: `${Math.random() * 100}%`,
+      left: `${Math.random() * 100}%`,
+      duration: Math.random() * 4 + 3,
+    }));
+    setParticles(newParticles);
+  }, []);
 
   return (
-    <section id ="hero" className="relative flex flex-col items-center justify-center h-screen text-center overflow-hidden">
+    <section
+      id="hero"
+      className="relative flex flex-col items-center justify-center h-screen text-center overflow-hidden"
+    >
       {/* Fondo animado */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-purple-900 to-gray-900 animate-gradient bg-[length:200%_200%]" />
 
       {/* Partículas */}
       <motion.div className="absolute inset-0 overflow-hidden">
-        {[...Array(25)].map((_, i) => (
+        {particles.map((p, i) => (
           <motion.div
             key={i}
             className="absolute bg-white/10 rounded-full"
             style={{
-              width: Math.random() * 8 + 4,
-              height: Math.random() * 8 + 4,
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
+              width: p.width,
+              height: p.height,
+              top: p.top,
+              left: p.left,
             }}
             animate={{
               y: [0, -20, 0],
               opacity: [0.4, 1, 0.4],
             }}
             transition={{
-              duration: Math.random() * 4 + 3,
+              duration: p.duration,
               repeat: Infinity,
               ease: "easeInOut",
             }}
@@ -67,7 +86,7 @@ const Hero: FC<Props> = ({ lang }) => {
         ))}
       </motion.div>
 
-      {/*Contenido */}
+      {/* Contenido */}
       <motion.p
         className="text-lg text-gray-300 z-10"
         initial={{ opacity: 0, y: 20 }}

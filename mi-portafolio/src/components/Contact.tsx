@@ -82,27 +82,7 @@ const Contact: FC<Props> = ({ lang }) => {
         </button>
       </motion.form>
 
-      {/* Redes sociales */}
-      <motion.div
-        className="flex justify-center gap-6 mt-12 text-2xl"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5 }}
-        viewport={{ once: true }}
-      >
-        <a href="https://github.com/tuusuario" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">
-          <FaGithub />
-        </a>
-        <a href="https://linkedin.com/in/tuusuario" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition">
-          <FaLinkedin />
-        </a>
-        <a href="https://instagram.com/tuusuario" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-pink-500 transition">
-          <FaInstagram />
-        </a>
-        <a href="https://x.com/tuusuario" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-purple-500 transition">
-          <FaXTwitter />
-        </a>
-      </motion.div>
+  
     </section>
   );
 };

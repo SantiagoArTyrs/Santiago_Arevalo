@@ -39,7 +39,6 @@ const Hero: FC<Props> = ({ lang }) => {
     },
   }[lang];
 
-  // 👇 Generar las partículas de forma estable solo una vez en el cliente
   const [particles, setParticles] = useState<Particle[]>([]);
 
   useEffect(() => {

@@ -13,14 +13,14 @@ const Testimonials: FC<Props> = ({ lang }) => {
       title: "Testimonios",
       items: [
         {
-          name: "Laura Bastidas",
-          role: "Gerente de Proyecto",
+          name: "Jhonatan Mideros",
+          role: "Desarrollador Backend y Frontend",
           quote:
             "Trabajar con él fue una experiencia increíble. Siempre encuentra soluciones innovadoras.",
           img: "/img1.jpg",
         },
         {
-          name: "Carlos Pérez",
+          name: "Steven Alejandro",
           role: "Ingeniero de Software",
           quote:
             "Su habilidad para combinar diseño y código hace que cada proyecto brille.",
@@ -39,14 +39,14 @@ const Testimonials: FC<Props> = ({ lang }) => {
       title: "Testimonials",
       items: [
         {
-          name: "Laura Bastidas",
-          role: "Project Manager",
+          name: "Jhonatan Mideros",
+          role: "Backend and frontend developer",
           quote:
             "Working with him was an amazing experience. Always finds innovative solutions.",
           img: "/img1.jpg",
         },
         {
-          name: "Carlos Pérez",
+          name: "Steven Alejandro",
           role: "Software Engineer",
           quote:
             "His ability to merge design and code makes every project shine.",
@@ -64,7 +64,10 @@ const Testimonials: FC<Props> = ({ lang }) => {
   }[lang];
 
   return (
-    <section id="testimonials" className="relative py-15 px-6 md:px-20 text-center">
+    <section
+      id="testimonials"
+      className="relative py-15 px-6 md:px-20 text-center"
+    >
       <motion.h2
         className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent mb-12"
         initial={{ opacity: 0, y: -20 }}

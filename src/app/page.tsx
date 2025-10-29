@@ -9,23 +9,22 @@ import Experience from "../components/Experience";
 import Hobbies from "../components/Hobbies";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
-import Skills from "../components/Skills";
 
 export default function Page() {
-  const [lang, setLang] = useState<"es"|"en">("es");
-  const [theme, setTheme] = useState<"dark"|"light">("dark");
+  const [lang, setLang] = useState<"es" | "en">("es");
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
 
   // load persisted preferences
-  useEffect(()=>{
-    const L = localStorage.getItem("lang") as "es"|"en" | null;
-    const T = localStorage.getItem("theme") as "dark"|"light" | null;
-    if(L) setLang(L);
-    if(T) setTheme(T);
-  },[]);
+  useEffect(() => {
+    const L = localStorage.getItem("lang") as "es" | "en" | null;
+    const T = localStorage.getItem("theme") as "dark" | "light" | null;
+    if (L) setLang(L);
+    if (T) setTheme(T);
+  }, []);
 
-  useEffect(()=>{
+  useEffect(() => {
     // apply theme
-    if(theme==="dark"){
+    if (theme === "dark") {
       document.documentElement.classList.remove("light");
       document.documentElement.classList.add("dark");
     } else {
@@ -33,12 +32,20 @@ export default function Page() {
       document.documentElement.classList.add("light");
     }
     localStorage.setItem("theme", theme);
-  },[theme]);
+  }, [theme]);
 
   return (
     <>
-      <Navbar lang={lang} setLang={(l)=>{setLang(l as "es"|"en"); localStorage.setItem("lang", l)}} toggleTheme={()=> setTheme(t => t==="dark"?"light":"dark")} theme={theme} />
-      <main className="pt-24">
+      <Navbar
+        lang={lang}
+        setLang={(l) => {
+          setLang(l as "es" | "en");
+          localStorage.setItem("lang", l);
+        }}
+        toggleTheme={() => setTheme((t) => (t === "dark" ? "light" : "dark"))}
+        theme={theme}
+      />
+      <main>
         <Hero lang={lang} />
         <About lang={lang} />
         <Projects lang={lang} />

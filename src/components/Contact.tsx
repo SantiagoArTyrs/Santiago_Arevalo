@@ -2,7 +2,6 @@
 
 import { FC } from "react";
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaInstagram, FaXTwitter } from "react-icons/fa6";
 
 type Props = {
   lang: "es" | "en";
@@ -81,8 +80,6 @@ const Contact: FC<Props> = ({ lang }) => {
           {texts.button}
         </button>
       </motion.form>
-
-  
     </section>
   );
 };

@@ -1,6 +1,6 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import { FiSun, FiMoon, FiGlobe, FiMenu } from "react-icons/fi";
-import Link from "next/link";
+
 
 type Props = {
   lang: string;

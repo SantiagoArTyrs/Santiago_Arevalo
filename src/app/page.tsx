@@ -23,13 +23,11 @@ export default function Page() {
   }, []);
 
   useEffect(() => {
-    // apply theme
-    if (theme === "dark") {
-      document.documentElement.classList.remove("light");
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
+    
+    if (theme === "light") {
       document.documentElement.classList.add("light");
+    } else {
+      document.documentElement.classList.remove("light");
     }
     localStorage.setItem("theme", theme);
   }, [theme]);

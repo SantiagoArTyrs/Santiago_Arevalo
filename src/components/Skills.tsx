@@ -51,7 +51,11 @@ const Skills: FC<Props> = ({ lang }) => {
   return (
     <section
       id="skills"
-      className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-slate-900 via-indigo-900 to-purple-900 text-white px-6 py-20"
+      className="min-h-screen flex flex-col justify-center items-center px-6 py-20"
+      style={{
+        background: "linear-gradient(135deg, var(--bg-1), var(--bg-2))",
+        color: "var(--muted)",
+      }}
     >
       {/* Título */}
       <motion.h2
@@ -60,24 +64,29 @@ const Skills: FC<Props> = ({ lang }) => {
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
         className="text-4xl md:text-5xl font-bold mb-6 text-center"
+        style={{ color: "var(--accent-2)" }}
       >
         {texts.title}
       </motion.h2>
-
       {/* Descripción */}
       <motion.p
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.2 }}
         viewport={{ once: true }}
-        className="text-lg md:text-xl max-w-3xl text-center text-gray-300 mb-12"
+        className="text-lg md:text-xl max-w-3xl text-center mb-12"
+        style={{ color: "var(--muted)" }}
       >
         {texts.desc}
       </motion.p>
-
       {/* Hard Skills */}
       <div className="w-full max-w-5xl mb-16">
-        <h3 className="text-2xl font-semibold mb-8 text-center">{texts.hard}</h3>
+        <h3
+          className="text-2xl font-semibold mb-8 text-center"
+          style={{ color: "var(--accent-2)" }}
+        >
+          {texts.hard}
+        </h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 justify-items-center">
           {texts.hardSkills.map((skill, i) => (
             <motion.div
@@ -88,18 +97,35 @@ const Skills: FC<Props> = ({ lang }) => {
               viewport={{ once: true }}
               className="flex flex-col items-center text-center hover:scale-105 transition-transform duration-300"
             >
-              <div className="bg-white/10 p-4 rounded-2xl mb-3 text-cyan-400">
+              <div
+                style={{
+                  background: "rgba(255,255,255,0.10)",
+                  color: "var(--accent-2)", // cambia automá. según tema
+                  padding: "1rem",
+                  borderRadius: "1rem",
+                  marginBottom: "0.75rem",
+                }}
+              >
                 {skill.icon}
               </div>
-              <span className="font-medium text-gray-200">{skill.label}</span>
+              <span
+                className="font-medium"
+                style={{ color: "var(--muted)" }}
+              >
+                {skill.label}
+              </span>
             </motion.div>
           ))}
         </div>
       </div>
-
       {/* Soft Skills */}
       <div className="w-full max-w-5xl">
-        <h3 className="text-2xl font-semibold mb-8 text-center">{texts.soft}</h3>
+        <h3
+          className="text-2xl font-semibold mb-8 text-center"
+          style={{ color: "var(--accent-1)" }}
+        >
+          {texts.soft}
+        </h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 justify-items-center">
           {texts.softSkills.map((skill, i) => (
             <motion.div
@@ -110,10 +136,23 @@ const Skills: FC<Props> = ({ lang }) => {
               viewport={{ once: true }}
               className="flex flex-col items-center text-center hover:scale-105 transition-transform duration-300"
             >
-              <div className="bg-white/10 p-4 rounded-2xl mb-3 text-purple-400">
+              <div
+                style={{
+                  background: "rgba(255,255,255,0.10)",
+                  color: "var(--accent-1)", // cambia automá. según tema
+                  padding: "1rem",
+                  borderRadius: "1rem",
+                  marginBottom: "0.75rem",
+                }}
+              >
                 {skill.icon}
               </div>
-              <span className="font-medium text-gray-200">{skill.label}</span>
+              <span
+                className="font-medium"
+                style={{ color: "var(--muted)" }}
+              >
+                {skill.label}
+              </span>
             </motion.div>
           ))}
         </div>

@@ -54,7 +54,7 @@ const Hero: FC<Props> = ({ lang }) => {
   return (
     <section
       id="hero"
-      className="relative flex flex-col items-center justify-center h-screen text-center overflow-hidden"
+      className="relative flex flex-col items-center justify-center h-screen text-center"
       style={{
         background: "linear-gradient(180deg, var(--bg-1), var(--bg-2))",
         color: "var(--muted)",
@@ -105,7 +105,15 @@ const Hero: FC<Props> = ({ lang }) => {
         {texts.hi}
       </motion.p>
       <motion.h1
-        className="text-6xl md:text-7xl font-extrabold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent z-10"
+        className="text-6xl md:text-7xl font-extrabold z-10"
+        style={{
+          paddingBottom: "0.2em",
+          lineHeight: 1.1,
+
+          background: "var(--hero-title-gradient)",
+          WebkitBackgroundClip: "text",
+          color: "transparent",
+        }}
         initial={{ opacity: 0, y: -40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2 }}

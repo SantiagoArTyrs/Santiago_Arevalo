@@ -55,11 +55,11 @@ const Skills: FC<Props> = ({ lang }) => {
     >
       {/* Título */}
       <motion.h2
+      className="text-4xl md:text-5xl font-bold mb-6 text-center"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="text-4xl md:text-5xl font-bold mb-6 text-center"
         style={{
           background: "var(--main-title-gradient)",
           WebkitBackgroundClip: "text",

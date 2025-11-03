@@ -44,14 +44,30 @@
 .animate-gradient {
   animation: gradient 15s ease infinite;
 }
-/*Santiago Arevalo Hero Gradient*/
-:root {
-  --hero-title-gradient: linear-gradient(90deg, #00e6fb, #6560ff, #d726ff); /* Gradiente modo dark */
+
+
+:root{
+  /* Títulos */
+  --main-title-gradient: linear-gradient(90deg, #00e6fb, #6560ff, #d726ff); 
+  /* Colores de fondo y acento */
+  --bg-1:#0b1223;
+  --bg-2:#2d1246;
+  --accent-1:#6b21a8; 
+  --accent-2:#1ad8d8;
+  --muted:#ffffff;
+
 }
 :root.light {
-  --hero-title-gradient: linear-gradient(90deg, #ff5e62, #6a82fb, #2487ff); /* Gradiente modo light, ajusta los colores a tu gusto */
+  /* Títulos */
+  --main-title-gradient: linear-gradient(90deg, #ff5e62, #6a82fb, #2487ff); 
+  /* Colores de fondo y acento */
+  --bg-1: #ffffff69;
+  --bg-2: #2d57df;
+  --accent-1: #ef3844;
+  --accent-2: #2487ff;
+  --muted: #070707;
+  color-scheme: light;
 }
-
 
 .glass {
   background: rgba(0, 0, 0, 0.08);
@@ -60,25 +76,6 @@
   backdrop-filter: blur(10px) saturate(180%);
   -webkit-backdrop-filter: blur(10px) saturate(180%);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
-}
-
-/*Dark theme */
-:root{
-  --bg-1:#0b1223;
-  --bg-2:#2d1246;
-  --accent-1:#6b21a8; 
-  --accent-2:#1ad8d8;
-  --muted:#ffffff;
-}
-
-/* Light theme */
-:root.light {
-  --bg-1: #ffffff69;
-  --bg-2: #2d57df;
-  --accent-1: #ef3844;
-  --accent-2: #2487ff;
-  --muted: #070707;
-  color-scheme: light;
 }
 
 /* Base */

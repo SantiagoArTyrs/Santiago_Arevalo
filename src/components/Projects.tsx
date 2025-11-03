@@ -62,14 +62,22 @@ const Projects: FC<Props> = ({ lang }) => {
   }[lang];
 
   return (
-    <section id="projects" className="relative py-20 px-6 md:px-20">
+    <section
+      id="projects"
+      className="min-h-screen flex flex-col justify-center items-center px-6 py-20"
+    >
       {/* Título */}
       <motion.h2
-        className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent"
+        className="text-4xl md:text-5xl font-bold text-center mb-16"
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
         viewport={{ once: true }}
+        style={{
+          background: "var(--main-title-gradient)",
+          WebkitBackgroundClip: "text",
+          color: "transparent",
+        }}
       >
         {texts.title}
       </motion.h2>
@@ -79,22 +87,44 @@ const Projects: FC<Props> = ({ lang }) => {
         {texts.projects.map((proj, i) => (
           <motion.div
             key={i}
-            className="group relative glass glow rounded-2xl p-6 border border-cyan-500/20 cursor-pointer overflow-hidden"
+            className="group relative rounded-2xl p-6 border cursor-pointer overflow-hidden"
+            style={{
+              background: "rgba(255,255,255,0.06)",
+              border: "1.5px solid var(--accent-2)",
+              boxShadow:
+                "0 0 32px 2px var(--accent-2), 0 2px 8px 0 rgba(0,0,0,0.05)",
+            }}
             whileHover={{ scale: 1.05, rotateY: 5, rotateX: -3 }}
             transition={{ type: "spring", stiffness: 200, damping: 15 }}
           >
             {/* Fondo animado */}
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-600/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition duration-500 blur-2xl" />
-
-            <h3 className="text-xl font-bold text-cyan-400 relative z-10">
+            <div
+              className="absolute inset-0 transition duration-500 blur-2xl pointer-events-none"
+              style={{
+                background:
+                  "linear-gradient(120deg, var(--accent-2)20%, var(--accent-1) 80%, transparent)",
+                opacity: 0.13,
+              }}
+            />
+            <h3
+              className="text-xl font-bold relative z-10"
+              style={{ color: "var(--accent-2)" }}
+            >
               {proj.name}
             </h3>
-            <p className="text-gray-300 mt-2 relative z-10">{proj.desc}</p>
-
+            <p className="mt-2 relative z-10" style={{ color: "var(--muted)" }}>
+              {proj.desc}
+            </p>
             {/* Botón */}
             <motion.a
               href="#"
-              className="mt-4 inline-block px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-semibold text-sm shadow-md relative z-10 hover:scale-105 transition-transform"
+              className="mt-4 inline-block px-4 py-2 rounded-lg font-semibold text-sm shadow-md relative z-10 hover:scale-105 transition-transform"
+              style={{
+                color: "white",
+                background:
+                  "linear-gradient(90deg, var(--accent-2), var(--accent-1))",
+                border: "none",
+              }}
               whileHover={{ y: -2 }}
             >
               {lang === "es" ? "Ver más" : "View more"}

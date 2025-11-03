@@ -55,10 +55,6 @@ const Hero: FC<Props> = ({ lang }) => {
     <section
       id="hero"
       className="relative flex flex-col items-center justify-center h-screen text-center"
-      style={{
-        background: "linear-gradient(180deg, var(--bg-1), var(--bg-2))",
-        color: "var(--muted)",
-      }}
     >
       {/* Fondo animado */}
       <div
@@ -104,13 +100,15 @@ const Hero: FC<Props> = ({ lang }) => {
       >
         {texts.hi}
       </motion.p>
+
+      {/* Título */}
       <motion.h1
         className="text-6xl md:text-7xl font-extrabold z-10"
         style={{
           paddingBottom: "0.2em",
           lineHeight: 1.1,
 
-          background: "var(--hero-title-gradient)",
+          background: "var(--main-title-gradient)",
           WebkitBackgroundClip: "text",
           color: "transparent",
         }}

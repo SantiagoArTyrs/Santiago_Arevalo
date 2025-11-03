@@ -52,10 +52,6 @@ const Skills: FC<Props> = ({ lang }) => {
     <section
       id="skills"
       className="min-h-screen flex flex-col justify-center items-center px-6 py-20"
-      style={{
-        background: "linear-gradient(135deg, var(--bg-1), var(--bg-2))",
-        color: "var(--muted)",
-      }}
     >
       {/* Título */}
       <motion.h2
@@ -64,10 +60,15 @@ const Skills: FC<Props> = ({ lang }) => {
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
         className="text-4xl md:text-5xl font-bold mb-6 text-center"
-        style={{ color: "var(--accent-2)" }}
+        style={{
+          background: "var(--main-title-gradient)",
+          WebkitBackgroundClip: "text",
+          color: "transparent",
+        }}
       >
         {texts.title}
       </motion.h2>
+      
       {/* Descripción */}
       <motion.p
         initial={{ opacity: 0 }}
@@ -108,10 +109,7 @@ const Skills: FC<Props> = ({ lang }) => {
               >
                 {skill.icon}
               </div>
-              <span
-                className="font-medium"
-                style={{ color: "var(--muted)" }}
-              >
+              <span className="font-medium" style={{ color: "var(--muted)" }}>
                 {skill.label}
               </span>
             </motion.div>
@@ -139,7 +137,7 @@ const Skills: FC<Props> = ({ lang }) => {
               <div
                 style={{
                   background: "rgba(255,255,255,0.10)",
-                  color: "var(--accent-1)", // cambia automá. según tema
+                  color: "var(--accent-1)",
                   padding: "1rem",
                   borderRadius: "1rem",
                   marginBottom: "0.75rem",
@@ -147,10 +145,7 @@ const Skills: FC<Props> = ({ lang }) => {
               >
                 {skill.icon}
               </div>
-              <span
-                className="font-medium"
-                style={{ color: "var(--muted)" }}
-              >
+              <span className="font-medium" style={{ color: "var(--muted)" }}>
                 {skill.label}
               </span>
             </motion.div>

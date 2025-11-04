@@ -69,12 +69,7 @@ interface Props {
   lang?: Lang;
 }
 
-/**
- * Testimonials Component:
- * - Accesibilidad y animaciones optimizadas (Framer Motion)
- * - Responsive completo con Tailwind
- * - Buenas prácticas en estructura, semántica y estilos
- */
+
 const Testimonials: FC<Props> = ({ lang = "es" }) => {
   const texts = TEXTS[lang];
   const reduce = useReducedMotion();
@@ -135,12 +130,4 @@ const Testimonials: FC<Props> = ({ lang = "es" }) => {
 
 export default Testimonials;
 
-/*
-Principales cambios y notas:
-- Se mantienen todas las props y funciones útiles, eliminando líneas redundantes.
-- Se refina la semántica accesible (alt de imagen mejorado y outline en el contenedor para enfoque con teclado).
-- Clases Tailwind revisadas; se unifican variantes de opacidad, separación y se mantiene el uso de colores por CSS Variables para consistencia.
-- El valor de min-h-height se hace más razonable para no obligar a un viewport gigante en móviles.
-- Se agregan pequeños comentarios para aclarar estructura, especialmente a nivel de accesibilidad.
-- Código modular, limpio y preparado para mantener performance y responsividad.
-*/
+

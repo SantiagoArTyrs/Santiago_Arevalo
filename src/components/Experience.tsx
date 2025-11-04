@@ -74,12 +74,7 @@ interface Props {
   lang?: Lang;
 }
 
-/**
- * EXPERIENCE Section:
- * - Timeline visual en desktop, layout clásico en móvil.
- * - Tarjetas anchas y bajas para buena visualización en todos los dispositivos.
- * - Componente modular, responsivo y bien estructurado.
- */
+
 const Experience: FC<Props> = ({ lang = "es" }) => {
   const texts = TEXTS[lang];
   const reduce = useReducedMotion();
@@ -168,13 +163,4 @@ const Experience: FC<Props> = ({ lang = "es" }) => {
 
 export default Experience;
 
-/*
-Mejoras principales:
-- Usé clases Tailwind nativas como bg-white/10 y border en lugar de sintaxis RGBA, para mayor claridad y mantenibilidad.
-- Mejoré max-w y w para que las tarjetas sean armónicas y no se vean excesivamente grandes en desktop.
-- Se mantuvo la línea timeline responsiva, visible solo en desktop.
-- outline-none y focus-within mejorados para accesibilidad al navegar con teclado.
-- Responsividad robusta: flex, grid, paddings y widths controlados para evitar overflows y mantener legibilidad.
-- Comentarios en cada bloque principal con las razones de cambios y cómo adaptar si se desea.
-- Imports limpios, sin líneas sin uso.
-*/
+

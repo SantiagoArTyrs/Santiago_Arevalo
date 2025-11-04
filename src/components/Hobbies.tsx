@@ -5,7 +5,7 @@ import { FC } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Music, Gamepad2, Film, Headphones, Dumbbell } from "lucide-react";
 
-// Props y textos internacionalizados
+
 interface Props {
   lang: "es" | "en";
 }
@@ -35,11 +35,7 @@ const TEXTS = {
   },
 } as const;
 
-/**
- * Hobbies Component:
- * - Sin height fija, full responsive, accesible y visualmente consistente.
- * - Grid de hasta 5 columnas en desktop, animaciones y foco accesible.
- */
+
 const Hobbies: FC<Props> = ({ lang }) => {
   const texts = TEXTS[lang];
   const reduce = useReducedMotion();
@@ -48,7 +44,7 @@ const Hobbies: FC<Props> = ({ lang }) => {
     <section
       id="hobbies"
       className="flex flex-col items-center justify-center w-full py-20 px-4 text-center"
-      // Se elimina min-h-screen para evitar espacios innecesarios en mobile/y en páginas con poco contenido.
+      
     >
       {/* Título gradiente */}
       <motion.h2
@@ -118,12 +114,4 @@ const Hobbies: FC<Props> = ({ lang }) => {
 
 export default Hobbies;
 
-/*
-Mejoras y motivos:
-- Se eliminó min-h-screen (solo padding vertical), por fluidez visual y evitar espacios vacíos en mobil.
-- Grid ultra adaptable (2 a 5 columnas según breakpoint).
-- Accesibilidad mejorada: outline, focus y aria-label para cada hobby.
-- Clases Tailwind ajustadas: se prefirió bg-white/80 a RGBA custom para menos redundancia, y se mantuvo shadow/blur profesional.
-- Animaciones solo visibles y suaves, respetando prefers-reduced-motion.
-- Descripción y título con gradiente y colores variables.
-*/
+

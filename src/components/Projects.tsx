@@ -37,11 +37,7 @@ interface Props {
   lang?: Lang;
 }
 
-/**
- * Projects Component:
- * - Grid ultra-responsive, accesibilidad y animación/decoración moderna.
- * - Código limpio, modular y mantenible.
- */
+
 const Projects: FC<Props> = ({ lang = "es" }) => {
   const texts = TEXTS[lang];
   const shouldReduceMotion = useReducedMotion();
@@ -117,12 +113,4 @@ const Projects: FC<Props> = ({ lang = "es" }) => {
 
 export default Projects;
 
-/*
-PRINCIPALES CAMBIOS Y BEST PRACTICES:
-- Se cambió el min-h-screen por min-h-[60vh] para eliminar espacios extra en mobile/desktop pequeños.
-- Se unificaron los backgrounds a bg-white/5 para máxima claridad y control de opacidad, eliminando RGB ambiguo.
-- outline-none y focus-within: accesibilidad óptima en tarjetas y botones.
-- Animaciones solo when visible y reduced motion.
-- Limpieza general de imports, tipados y lógica.
-- Grid profesional y fluido, ningún overflow ni salto visual.
-*/
+

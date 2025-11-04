@@ -61,12 +61,7 @@ interface Props {
   lang?: Lang;
 }
 
-/**
- * Skills Component:
- * - Accesible, modular, animado y 100% responsive.
- * - Clases Tailwind ordenadas y minimalistas.
- * - Performance optimizada: animación sólo al hacer scroll.
- */
+
 const Skills: FC<Props> = ({ lang = "es" }) => {
   const texts = TEXTS[lang];
   const reduce = useReducedMotion();
@@ -157,13 +152,4 @@ const Skills: FC<Props> = ({ lang = "es" }) => {
 
 export default Skills;
 
-/*
-PRINCIPALES CAMBIOS Y SUGERENCIAS:
-- Se cambió el padding vertical excesivo y el min-h-screen por min-h-[55vh], para evitar sobreespaciado en móvil o cuando hay menos contenido.
-- Animaciones accesibles (reduce motion).
-- Clases Tailwind simplificadas (`bg-white/10` en vez de RGB manual).
-- Se agregaron focus-within y aria-label en los bloques para accesibilidad y mejor navegación teclado.
-- Los grids son fluidos y escalables desde 2 a 4 columnas, adaptados a pantallas pequeñas.
-- No hay repeticiones de clases ni incoherencias visuales.
-- Componente completamente modular y limpio.
-*/
+

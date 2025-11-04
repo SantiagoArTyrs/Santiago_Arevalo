@@ -176,11 +176,4 @@ const Hero: FC<Props> = ({ lang = "es" }) => {
 
 export default Hero;
 
-/*
-Cambios y mejoras:
-- Consolidación y reutilización de clases en botones y chips.
-- overflow-hidden en sección y fondo para evitar cualquier desborde de partículas.
-- Animaciones cuidadosas y accesibles; particles sólo si reduce motion lo permite.
-- Tipado, naming, estructura y comentarios alineados a estándares modernos.
-- ¿Quieres incluir CTA para “scroll down” con animación? Se puede añadir fácilmente.
-*/
+

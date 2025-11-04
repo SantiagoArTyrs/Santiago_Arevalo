@@ -27,12 +27,7 @@ const TEXTS = {
   },
 } as const;
 
-/**
- * Contact Component — versión final y modernizada:
- * - Sin height forzado/min-h-screen; altura y fondo dependen del layout global.
- * - Padding vertical suficiente, layout fluido, sin espacios extra.
- * - 100% responsivo y accesible, usando clases y estilos consistentes.
- */
+
 const Contact: FC<Props> = ({ lang }) => {
   const texts = TEXTS[lang];
   const reduce = useReducedMotion();
@@ -112,12 +107,4 @@ const Contact: FC<Props> = ({ lang }) => {
 
 export default Contact;
 
-/*
-Notas y mejoras clave:
-- Se eliminó min-h-screen para evitar demasiado espacio vacío o “sección forzada” en mobile/desktop.
-- El formulario es fluido, sin fondo fijo: integra perfectamente con el layout general.
-- Clases Tailwind unificadas (bg-white/20 para inputs en vez de rgba).
-- Inputs y textarea siempre con focus-visible, accesibilidad y contraste consistentes.
-- Py suficiente pero sin dejar gaps innecesarios arriba/abajo.
-- Preparado para integración directa de handlers de envío, si los necesitas luego.
-*/
+

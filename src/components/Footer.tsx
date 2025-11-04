@@ -21,30 +21,38 @@ const Footer: FC<Props> = ({ lang }) => {
   }[lang];
 
   return (
-    <footer className="relative bg-gradient-to-r from-gray-900 via-gray-950 to-black text-gray-400 py-10 px-6 md:px-20 overflow-hidden">
-      {/* Animación de fondo */}
-      <div className="absolute inset-0">
+    <footer
+      className="relative w-full flex-shrink-0 py-10 px-6 md:px-20 overflow-hidden"
+      style={{
+        // Fondo gradiente global, solo con variables CSS
+        background: "linear-gradient(180deg, var(--bg-1), var(--bg-2))",
+        color: "var(--muted)",
+        marginTop: 0
+      }}
+    >
+      <div className="absolute inset-0 pointer-events-none">
         <motion.div
-          className="absolute -top-20 -left-20 w-72 h-72 bg-cyan-500/30 rounded-full blur-3xl"
+          className="absolute -top-20 -left-20 w-72 h-72 rounded-full blur-3xl"
+          style={{ background: "var(--accent-2)", opacity: 0.20 }}
           animate={{ x: [0, 40, 0], y: [0, 40, 0] }}
-          transition={{ duration: 10, repeat: Infinity }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute -bottom-20 -right-20 w-72 h-72 bg-purple-600/30 rounded-full blur-3xl"
+          className="absolute -bottom-20 -right-20 w-72 h-72 rounded-full blur-3xl"
+          style={{ background: "var(--accent-1)", opacity: 0.20 }}
           animate={{ x: [0, -40, 0], y: [0, -40, 0] }}
-          transition={{ duration: 12, repeat: Infinity }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
         />
       </div>
 
-      {/* Contenido principal */}
       <div className="relative z-10 flex flex-col items-center gap-6">
-        {/* Redes sociales */}
         <div className="flex gap-6 text-2xl">
           <a
             href="https://github.com/SantiagoArTyrs"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-white transition"
+            className="hover:text-[var(--accent-2)] transition focus:outline-none focus:ring-2 focus:ring-[var(--accent-2)] rounded"
+            aria-label="GitHub"
           >
             <FaGithub />
           </a>
@@ -52,31 +60,34 @@ const Footer: FC<Props> = ({ lang }) => {
             href="https://www.linkedin.com/in/s-a-3ab9a638b/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-cyan-400 transition"
+            className="hover:text-[var(--accent-2)] transition focus:outline-none focus:ring-2 focus:ring-[var(--accent-2)] rounded"
+            aria-label="LinkedIn"
           >
             <FaLinkedin />
           </a>
           <a
-            href=""
+            href="https://www.instagram.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-pink-500 transition"
+            className="hover:text-pink-400 transition focus:outline-none focus:ring-2 focus:ring-pink-400 rounded"
+            aria-label="Instagram"
           >
             <FaInstagram />
           </a>
           <a
-            href=""
+            href="https://x.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-purple-500 transition"
+            className="hover:text-[var(--accent-1)] transition focus:outline-none focus:ring-2 focus:ring-[var(--accent-1)] rounded"
+            aria-label="Twitter/X"
           >
             <FaXTwitter />
           </a>
         </div>
 
-        {/* Texto */}
         <motion.p
-          className="text-sm text-gray-400"
+          className="text-sm"
+          style={{ color: "var(--muted)" }}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1 }}
@@ -85,7 +96,8 @@ const Footer: FC<Props> = ({ lang }) => {
           {texts.rights}
         </motion.p>
         <motion.p
-          className="text-xs text-gray-500 italic"
+          className="text-xs italic"
+          style={{ color: "var(--muted)", opacity: 0.7 }}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 1 }}

@@ -66,7 +66,7 @@ const Footer: FC<Props> = ({ lang }) => {
             <FaLinkedin />
           </a>
           <a
-            href="https://www.instagram.com/"
+            href="https://www.instagram.com/sant__s.b?igsh=MWd4d2ZmMnc1a2N6Zg=="
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-pink-400 transition focus:outline-none focus:ring-2 focus:ring-pink-400 rounded"

@@ -1,78 +1,67 @@
+// Projects.tsx
 "use client";
 
 import { FC } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
-type Props = {
-  lang: "es" | "en";
-};
+// Tipos claros y concisos para estructura y consistencia
+type Lang = "es" | "en";
+type Project = { name: string; desc: string };
+type Texts = { title: string; projects: Project[] };
 
-const Projects: FC<Props> = ({ lang }) => {
-  const texts = {
-    es: {
-      title: "Mis Proyectos",
-      projects: [
-        {
-          name: "Pharmasync",
-          desc: "IA asistente para gestión farmacéutica y consultas inteligentes.",
-        },
-        {
-          name: "Analityx",
-          desc: "Plataforma de análisis de mercado impulsada por IA.",
-        },
-        {
-          name: "BillsMonitor",
-          desc: "Aplicación para gestionar y monitorear finanzas con IA integrada.",
-        },
-        {
-          name: "NeuroPlay",
-          desc: "Juego interactivo con IA que adapta la dificultad en tiempo real.",
-        },
-        {
-          name: "VisionFlow",
-          desc: "Herramienta de visión computacional para reconocimiento avanzado.",
-        },
-      ],
-    },
-    en: {
-      title: "My Projects",
-      projects: [
-        {
-          name: "Pharmasync",
-          desc: "AI assistant for pharmaceutical management and smart queries.",
-        },
-        {
-          name: "Analityx",
-          desc: "Market analysis platform powered by AI.",
-        },
-        {
-          name: "BillsMonitor",
-          desc: "App to manage and monitor finances with integrated AI.",
-        },
-        {
-          name: "NeuroPlay",
-          desc: "Interactive game with AI that adapts difficulty in real time.",
-        },
-        {
-          name: "VisionFlow",
-          desc: "Computer vision tool for advanced recognition.",
-        },
-      ],
-    },
-  }[lang];
+// Data internacionalizada usando as const para inmutabilidad segura
+const TEXTS: Record<Lang, Texts> = {
+  es: {
+    title: "Mis Proyectos",
+    projects: [
+      { name: "Pharmasync", desc: "IA asistente para gestión farmacéutica y consultas inteligentes." },
+      { name: "Analityx", desc: "Plataforma de análisis de mercado impulsada por IA." },
+      { name: "BillsMonitor", desc: "Aplicación para gestionar y monitorear finanzas con IA integrada." },
+      { name: "NeuroPlay", desc: "Juego interactivo con IA que adapta la dificultad en tiempo real." },
+      { name: "VisionFlow", desc: "Herramienta de visión computacional para reconocimiento avanzado." },
+    ],
+  },
+  en: {
+    title: "My Projects",
+    projects: [
+      { name: "Pharmasync", desc: "AI assistant for pharmaceutical management and smart queries." },
+      { name: "Analityx", desc: "Market analysis platform powered by AI." },
+      { name: "BillsMonitor", desc: "App to manage and monitor finances with integrated AI." },
+      { name: "NeuroPlay", desc: "Interactive game with AI that adapts difficulty in real time." },
+      { name: "VisionFlow", desc: "Computer vision tool for advanced recognition." },
+    ],
+  },
+} as const;
+
+interface Props {
+  lang?: Lang;
+}
+
+/**
+ * Projects Component:
+ * - Grid ultra-responsive, accesibilidad y animación/decoración moderna.
+ * - Código limpio, modular y mantenible.
+ */
+const Projects: FC<Props> = ({ lang = "es" }) => {
+  const texts = TEXTS[lang];
+  const shouldReduceMotion = useReducedMotion();
+
+  // Animación accesible para reduced motion
+  const cardInitial = shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 24 };
+  const cardAnimate = { opacity: 1, y: 0 };
 
   return (
     <section
       id="projects"
-      className="min-h-screen flex flex-col justify-center items-center px-6 py-20"
+      className="relative flex flex-col items-center justify-center min-h-[60vh] py-20 px-4 sm:px-8 text-center overflow-x-hidden"
     >
-      {/* Título */}
       <motion.h2
-        className="text-4xl md:text-5xl font-bold text-center mb-16"
-        initial={{ opacity: 0, y: -20 }}
+        id="projects-title"
+        className="text-4xl md:text-5xl font-extrabold mb-12 bg-clip-text text-transparent"
+        initial={{ opacity: 0, y: shouldReduceMotion ? 0 : -20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true, amount: 0.3 }}
         style={{
           background: "var(--main-title-gradient)",
           WebkitBackgroundClip: "text",
@@ -82,50 +71,40 @@ const Projects: FC<Props> = ({ lang }) => {
         {texts.title}
       </motion.h2>
 
-      {/* Cards */}
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-        {texts.projects.map((proj, i) => (
+      <div className="w-full max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {texts.projects.map((proj) => (
           <motion.div
-            key={i}
-            className="group relative rounded-2xl p-6 border cursor-pointer overflow-hidden"
+            key={proj.name}
+            className="group relative flex flex-col rounded-2xl p-6 border overflow-hidden shadow-lg border-[var(--accent-2)] bg-white/5 focus-within:ring-2 focus-within:ring-[var(--accent-2)] transition-transform duration-300 hover:scale-105 outline-none"
             style={{
-              background: "rgba(255,255,255,0.06)",
-              border: "1.5px solid var(--accent-2)",
-              boxShadow:
-                "0 0 32px 2px var(--accent-2), 0 2px 8px 0 rgba(0,0,0,0.05)",
+              boxShadow: "0 0 32px 2px var(--accent-2), 0 2px 8px 0 rgba(0,0,0,0.05)",
             }}
-            whileHover={{ scale: 1.05, rotateY: 5, rotateX: -3 }}
+            initial={cardInitial}
+            whileInView={cardAnimate}
+            whileHover={!shouldReduceMotion ? { scale: 1.05, rotateY: 5, rotateX: -3 } : undefined}
             transition={{ type: "spring", stiffness: 200, damping: 15 }}
+            viewport={{ once: true, amount: 0.2 }}
+            tabIndex={0}
+            aria-label={lang === "es" ? `Proyecto ${proj.name}` : `Project ${proj.name}`}
           >
-            {/* Fondo animado */}
+            {/* Fondo animado decorativo */}
             <div
-              className="absolute inset-0 transition duration-500 blur-2xl pointer-events-none"
+              className="absolute inset-0 pointer-events-none blur-2xl transition duration-500"
               style={{
                 background:
-                  "linear-gradient(120deg, var(--accent-2)20%, var(--accent-1) 80%, transparent)",
+                  "linear-gradient(120deg, var(--accent-2) 20%, var(--accent-1) 80%, transparent)",
                 opacity: 0.13,
               }}
+              aria-hidden="true"
             />
-            <h3
-              className="text-xl font-bold relative z-10"
-              style={{ color: "var(--accent-2)" }}
-            >
-              {proj.name}
-            </h3>
-            <p className="mt-2 relative z-10" style={{ color: "var(--muted)" }}>
-              {proj.desc}
-            </p>
-            {/* Botón */}
+            <h3 className="text-xl font-bold relative z-10 text-[var(--accent-2)]">{proj.name}</h3>
+            <p className="mt-2 relative z-10 text-[var(--muted)]">{proj.desc}</p>
             <motion.a
               href="#"
-              className="mt-4 inline-block px-4 py-2 rounded-lg font-semibold text-sm shadow-md relative z-10 hover:scale-105 transition-transform"
-              style={{
-                color: "white",
-                background:
-                  "linear-gradient(90deg, var(--accent-2), var(--accent-1))",
-                border: "none",
-              }}
-              whileHover={{ y: -2 }}
+              tabIndex={0}
+              className="mt-4 inline-block self-start px-4 py-2 rounded-lg font-semibold text-sm shadow-md relative z-10 hover:scale-105 transition-transform bg-[linear-gradient(90deg,var(--accent-2),var(--accent-1))] text-white focus:outline-none focus:ring-2 focus:ring-[var(--accent-2)]"
+              whileHover={!shouldReduceMotion ? { y: -2 } : undefined}
+              aria-label={lang === "es" ? `Ver más sobre ${proj.name}` : `View more about ${proj.name}`}
             >
               {lang === "es" ? "Ver más" : "View more"}
             </motion.a>
@@ -137,3 +116,13 @@ const Projects: FC<Props> = ({ lang }) => {
 };
 
 export default Projects;
+
+/*
+PRINCIPALES CAMBIOS Y BEST PRACTICES:
+- Se cambió el min-h-screen por min-h-[60vh] para eliminar espacios extra en mobile/desktop pequeños.
+- Se unificaron los backgrounds a bg-white/5 para máxima claridad y control de opacidad, eliminando RGB ambiguo.
+- outline-none y focus-within: accesibilidad óptima en tarjetas y botones.
+- Animaciones solo when visible y reduced motion.
+- Limpieza general de imports, tipados y lógica.
+- Grid profesional y fluido, ningún overflow ni salto visual.
+*/

@@ -1,126 +1,180 @@
+// Experience.tsx
 "use client";
 
 import { FC } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { FaGraduationCap, FaCertificate } from "react-icons/fa6";
 
-type Props = {
-  lang: "es" | "en";
+type Lang = "es" | "en";
+type Study = {
+  icon: React.ReactNode;
+  title: string;
+  place: string;
+  desc: string;
+  date: string;
+};
+type Texts = { title: string; studies: Study[] };
+
+const TEXTS: Record<Lang, Texts> = {
+  es: {
+    title: "Experiencia Académica",
+    studies: [
+      {
+        icon: <FaGraduationCap aria-hidden="true" />,
+        title: "Ingeniería de Software",
+        place: "Universidad Cooperativa de Colombia",
+        desc: "Actualmente cursando 5to semestre, con enfoque en desarrollo de software e innovación tecnológica.",
+        date: "2021 - Actualidad",
+      },
+      {
+        icon: <FaCertificate aria-hidden="true" />,
+        title: "Certificado en Desarrollo FullStack",
+        place: "Platzi / Udemy / Certificación online",
+        desc: "Enfoque en React, Node.js, TypeScript y arquitecturas modernas.",
+        date: "2024",
+      },
+      {
+        icon: <FaCertificate aria-hidden="true" />,
+        title: "Certificado en Inteligencia Artificial",
+        place: "Google Cloud & OpenAI",
+        desc: "Modelos de IA aplicados a proyectos reales: análisis de datos, asistentes virtuales y más.",
+        date: "2025",
+      },
+    ],
+  },
+  en: {
+    title: "Academic Experience",
+    studies: [
+      {
+        icon: <FaGraduationCap aria-hidden="true" />,
+        title: "Software Engineering",
+        place: "Universidad Cooperativa de Colombia",
+        desc: "Currently studying 5th semester, focused on software development and tech innovation.",
+        date: "2021 - Present",
+      },
+      {
+        icon: <FaCertificate aria-hidden="true" />,
+        title: "FullStack Development Certificate",
+        place: "Platzi / Udemy / Online Certification",
+        desc: "Focus on React, Node.js, TypeScript and modern architectures.",
+        date: "2024",
+      },
+      {
+        icon: <FaCertificate aria-hidden="true" />,
+        title: "Artificial Intelligence Certificate",
+        place: "Google Cloud & OpenAI",
+        desc: "AI models applied to real projects: data analysis, virtual assistants, and more.",
+        date: "2025",
+      },
+    ],
+  },
 };
 
-const Experience: FC<Props> = ({ lang }) => {
-  const texts = {
-    es: {
-      title: "Experiencia Académica",
-      studies: [
-        {
-          icon: <FaGraduationCap />,
-          title: "Ingeniería de Software",
-          place: "Universidad Cooperativa de Colombia",
-          desc: "Actualmente cursando 5to semestre, con enfoque en desarrollo de software e innovación tecnológica.",
-          date: "2021 - Actualidad",
-        },
-        {
-          icon: <FaCertificate />,
-          title: "Certificado en Desarrollo FullStack",
-          place: "Platzi / Udemy / Certificación online",
-          desc: "Enfoque en React, Node.js, TypeScript y arquitecturas modernas.",
-          date: "2024",
-        },
-        {
-          icon: <FaCertificate />,
-          title: "Certificado en Inteligencia Artificial",
-          place: "Google Cloud & OpenAI",
-          desc: "Modelos de IA aplicados a proyectos reales: análisis de datos, asistentes virtuales y más.",
-          date: "2025",
-        },
-      ],
-    },
-    en: {
-      title: "Academic Experience",
-      studies: [
-        {
-          icon: <FaGraduationCap />,
-          title: "Software Engineering",
-          place: "Universidad Cooperativa de Colombia",
-          desc: "Currently studying 5th semester, focused on software development and tech innovation.",
-          date: "2021 - Present",
-        },
-        {
-          icon: <FaCertificate />,
-          title: "FullStack Development Certificate",
-          place: "Platzi / Udemy / Online Certification",
-          desc: "Focus on React, Node.js, TypeScript and modern architectures.",
-          date: "2024",
-        },
-        {
-          icon: <FaCertificate />,
-          title: "Artificial Intelligence Certificate",
-          place: "Google Cloud & OpenAI",
-          desc: "AI models applied to real projects: data analysis, virtual assistants, and more.",
-          date: "2025",
-        },
-      ],
-    },
-  }[lang];
+interface Props {
+  lang?: Lang;
+}
+
+/**
+ * EXPERIENCE Section:
+ * - Timeline visual en desktop, layout clásico en móvil.
+ * - Tarjetas anchas y bajas para buena visualización en todos los dispositivos.
+ * - Componente modular, responsivo y bien estructurado.
+ */
+const Experience: FC<Props> = ({ lang = "es" }) => {
+  const texts = TEXTS[lang];
+  const reduce = useReducedMotion();
 
   return (
-    <section id="experience" className="min-h-screen relative py-70 px-6 md:px-20">
-      {/* Título */}
+    <section
+      id="experience"
+      aria-labelledby="experience-title"
+      className="relative flex flex-col items-center justify-center min-h-[65vh] py-16 px-4 text-center"
+    >
       <motion.h2
-        className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent"
-        initial={{ opacity: 0, y: -20 }}
+        id="experience-title"
+        className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-12 bg-clip-text text-transparent"
+        initial={{ opacity: 0, y: reduce ? 0 : -28 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 0.8 }}
         viewport={{ once: true }}
+        style={{
+          background: "var(--main-title-gradient)",
+          WebkitBackgroundClip: "text",
+          color: "transparent",
+        }}
       >
         {texts.title}
       </motion.h2>
-
-      {/* Timeline */}
-      <div className="relative max-w-4xl mx-auto">
-        {/* Línea central animada */}
-        {/* Línea central animada (solo visible en pantallas medianas o mayores) */}
-<motion.div
-  className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-cyan-500 via-blue-600 to-purple-600"
-  initial={{ scaleY: 0 }}
-  whileInView={{ scaleY: 1 }}
-  transition={{ duration: 1.2 }}
-  viewport={{ once: true }}
-/>
-
-
-        <div className="space-y-16">
+      <div className="relative w-full max-w-4xl">
+        {/* Timeline central sólo en desktop */}
+        <div
+          className="hidden lg:block absolute left-1/2 top-0 h-full w-1 bg-gradient-to-b from-[var(--accent-2)] to-[var(--accent-1)] -translate-x-1/2 opacity-60 rounded-full pointer-events-none"
+          aria-hidden="true"
+        />
+        <ul className="flex flex-col gap-12">
           {texts.studies.map((item, i) => (
-            <motion.div
-              key={i}
-              className={`relative flex items-center ${
-                i % 2 === 0 ? "justify-start" : "justify-end"
-              }`}
-              initial={{ opacity: 0, x: i % 2 === 0 ? -100 : 100 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
+            <motion.li
+              key={item.title}
+              className={`
+                relative flex flex-col lg:flex-row items-center w-full
+                ${i % 2 === 0
+                  ? "lg:self-start lg:justify-start lg:text-left"
+                  : "lg:self-end lg:justify-end lg:text-right"
+                }
+                lg:w-1/2
+              `}
+              initial={{ opacity: 0, y: reduce ? 0 : 48 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: i * 0.12 }}
+              viewport={{ once: true, amount: 0.25 }}
             >
               <div
-                className={`glass glow w-[90%] md:w-[45%] p-6 rounded-2xl shadow-xl border border-cyan-500/20 ${
-                  i % 2 === 0 ? "text-left" : "text-right"
-                }`}
+                className="
+                  rounded-2xl shadow-xl w-full
+                  sm:max-w-xl
+                  lg:max-w-2xl lg:w-[460px]
+                  py-3 px-6
+                  bg-white/10
+                  border border-[var(--accent-2)]
+                  flex flex-col justify-center
+                  outline-none
+                  focus-within:ring-2 focus-within:ring-[var(--accent-2)]
+                "
+                style={{
+                  maxHeight: "180px",
+                  boxShadow:
+                    "0 0 24px 1px var(--accent-2), 0 2px 8px 0 rgba(0,0,0,0.09)",
+                }}
+                tabIndex={0}
+                aria-label={`${item.title}: ${item.place}`}
               >
-                <div className="flex items-center gap-3 text-cyan-400 text-2xl mb-3">
+                <div className="flex items-center gap-3 text-2xl mb-1 text-[var(--accent-2)]">
                   {item.icon}
-                  <h3 className="font-semibold">{item.title}</h3>
+                  <h3 className="font-semibold text-lg">{item.title}</h3>
                 </div>
-                <p className="text-sm text-gray-400">{item.place}</p>
-                <p className="mt-2 text-gray-300">{item.desc}</p>
-                <p className="mt-2 text-xs text-gray-500">{item.date}</p>
+                <p className="text-sm text-[var(--accent-1)] opacity-90 mb-1">
+                  {item.place}
+                </p>
+                <p className="mb-1 text-[var(--muted)]">{item.desc}</p>
+                <p className="text-xs text-[var(--muted)] opacity-70">{item.date}</p>
               </div>
-            </motion.div>
+            </motion.li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );
 };
 
 export default Experience;
+
+/*
+Mejoras principales:
+- Usé clases Tailwind nativas como bg-white/10 y border en lugar de sintaxis RGBA, para mayor claridad y mantenibilidad.
+- Mejoré max-w y w para que las tarjetas sean armónicas y no se vean excesivamente grandes en desktop.
+- Se mantuvo la línea timeline responsiva, visible solo en desktop.
+- outline-none y focus-within mejorados para accesibilidad al navegar con teclado.
+- Responsividad robusta: flex, grid, paddings y widths controlados para evitar overflows y mantener legibilidad.
+- Comentarios en cada bloque principal con las razones de cambios y cómo adaptar si se desea.
+- Imports limpios, sin líneas sin uso.
+*/

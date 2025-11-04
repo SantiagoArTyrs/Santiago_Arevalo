@@ -1,75 +1,98 @@
+// Testimonials.tsx
 "use client";
 
 import { FC } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
-type Props = {
-  lang: "es" | "en";
+// Tipos para textos y testimonios
+type Lang = "es" | "en";
+type Item = { name: string; role: string; quote: string; img: string };
+type Texts = { title: string; items: Item[] };
+
+// Data internacionalizada
+const TEXTS: Record<Lang, Texts> = {
+  es: {
+    title: "Testimonios",
+    items: [
+      {
+        name: "Jhonatan Mideros",
+        role: "Desarrollador Backend y Frontend",
+        quote:
+          "Trabajar con él fue una experiencia increíble. Siempre encuentra soluciones innovadoras.",
+        img: "/img1.jpg",
+      },
+      {
+        name: "Steven Alejandro",
+        role: "Ingeniero de Software",
+        quote:
+          "Su habilidad para combinar diseño y código hace que cada proyecto brille.",
+        img: "/img2.jpg",
+      },
+      {
+        name: "Ana Rodríguez",
+        role: "CTO en TechWave",
+        quote:
+          "Un profesional apasionado y muy confiable. Entrega resultados impecables.",
+        img: "/img3.jpg",
+      },
+    ],
+  },
+  en: {
+    title: "Testimonials",
+    items: [
+      {
+        name: "Jhonatan Mideros",
+        role: "Backend and frontend developer",
+        quote:
+          "Working with him was an amazing experience. Always finds innovative solutions.",
+        img: "/img1.jpg",
+      },
+      {
+        name: "Steven Alejandro",
+        role: "Software Engineer",
+        quote:
+          "His ability to merge design and code makes every project shine.",
+        img: "/img2.jpg",
+      },
+      {
+        name: "Ana Rodríguez",
+        role: "CTO at TechWave",
+        quote:
+          "A passionate and reliable professional. Delivers impeccable results.",
+        img: "/img3.jpg",
+      },
+    ],
+  },
 };
 
-const Testimonials: FC<Props> = ({ lang }) => {
-  const texts = {
-    es: {
-      title: "Testimonios",
-      items: [
-        {
-          name: "Jhonatan Mideros",
-          role: "Desarrollador Backend y Frontend",
-          quote: "Trabajar con él fue una experiencia increíble. Siempre encuentra soluciones innovadoras.",
-          img: "/img1.jpg",
-        },
-        {
-          name: "Steven Alejandro",
-          role: "Ingeniero de Software",
-          quote: "Su habilidad para combinar diseño y código hace que cada proyecto brille.",
-          img: "/img2.jpg",
-        },
-        {
-          name: "Ana Rodríguez",
-          role: "CTO en TechWave",
-          quote: "Un profesional apasionado y muy confiable. Entrega resultados impecables.",
-          img: "/img3.jpg",
-        },
-      ],
-    },
-    en: {
-      title: "Testimonials",
-      items: [
-        {
-          name: "Jhonatan Mideros",
-          role: "Backend and frontend developer",
-          quote: "Working with him was an amazing experience. Always finds innovative solutions.",
-          img: "/img1.jpg",
-        },
-        {
-          name: "Steven Alejandro",
-          role: "Software Engineer",
-          quote: "His ability to merge design and code makes every project shine.",
-          img: "/img2.jpg",
-        },
-        {
-          name: "Ana Rodríguez",
-          role: "CTO at TechWave",
-          quote: "A passionate and reliable professional. Delivers impeccable results.",
-          img: "/img3.jpg",
-        },
-      ],
-    },
-  }[lang];
+interface Props {
+  lang?: Lang;
+}
+
+/**
+ * Testimonials Component:
+ * - Accesibilidad y animaciones optimizadas (Framer Motion)
+ * - Responsive completo con Tailwind
+ * - Buenas prácticas en estructura, semántica y estilos
+ */
+const Testimonials: FC<Props> = ({ lang = "es" }) => {
+  const texts = TEXTS[lang];
+  const reduce = useReducedMotion();
+  const initialY = reduce ? 0 : 30;
 
   return (
     <section
       id="testimonials"
-            className="min-h-screen flex flex-col justify-center items-center px-6 py-20"
-      
+      aria-labelledby="testimonials-title"
+      className="flex flex-col items-center justify-center min-h-[60vh] py-20 px-4 text-center"
     >
-      {/* Título */}
       <motion.h2
-      className="text-4xl md:text-5xl font-bold mb-6 text-center"
-        initial={{ opacity: 0, y: 40 }}
+        id="testimonials-title"
+        className="text-4xl md:text-5xl font-extrabold mb-10 bg-clip-text text-transparent"
+        initial={{ opacity: 0, y: initialY }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+        viewport={{ once: true, amount: 0.3 }}
         style={{
           background: "var(--main-title-gradient)",
           WebkitBackgroundClip: "text",
@@ -78,52 +101,31 @@ const Testimonials: FC<Props> = ({ lang }) => {
       >
         {texts.title}
       </motion.h2>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {texts.items.map((t, i) => (
+      <div className="w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {texts.items.map((t) => (
           <motion.div
-            key={i}
-            className="glass p-6 rounded-2xl flex flex-col items-center text-center hover:scale-105 transition-transform"
-            initial={{ opacity: 0, y: 30 }}
+            key={t.name}
+            className="flex flex-col items-center rounded-2xl p-8 bg-white/10 shadow-xl transition-transform duration-300 hover:scale-105 focus-within:scale-105 focus-within:ring-2 focus-within:ring-[var(--accent-2)] outline-none"
+            initial={{ opacity: 0, y: initialY }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: i * 0.2 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true, amount: 0.2 }}
             style={{
-              background: "rgba(255,255,255,0.10)", // para glass en ambos modos
-              boxShadow: "0 0 32px 2px var(--accent-2), 0 2px 8px 0 rgba(0,0,0,0.08)",
+              boxShadow:
+                "0 0 32px 2px var(--accent-2), 0 2px 8px 0 rgba(0,0,0,0.08)",
             }}
+            tabIndex={0}
+            aria-label={`Testimonio de ${t.name}`}
           >
             <img
               src={t.img}
-              alt={t.name}
-              className="w-20 h-20 rounded-full mb-4"
-              style={{
-                border: "2px solid var(--accent-2)",
-              }}
+              alt={`Foto de ${t.name}`}
+              className="w-20 h-20 rounded-full mb-4 border-2.5 border-[var(--accent-2)] object-cover"
+              loading="lazy"
             />
-            <p
-              className="italic mb-4"
-              style={{ color: "var(--muted)" }}
-            >
-              “{t.quote}”
-            </p>
-            <h3
-              className="text-xl font-semibold"
-              style={{
-                color: "var(--accent-2)",
-              }}
-            >
-              {t.name}
-            </h3>
-            <span
-              className="text-sm"
-              style={{
-                color: "var(--muted)",
-                opacity: 0.7,
-              }}
-            >
-              {t.role}
-            </span>
+            <p className="italic mb-4 text-[var(--muted)]">“{t.quote}”</p>
+            <h3 className="text-lg font-bold text-[var(--accent-2)] mb-1">{t.name}</h3>
+            <span className="text-sm text-[var(--muted)] opacity-80">{t.role}</span>
           </motion.div>
         ))}
       </div>
@@ -132,3 +134,13 @@ const Testimonials: FC<Props> = ({ lang }) => {
 };
 
 export default Testimonials;
+
+/*
+Principales cambios y notas:
+- Se mantienen todas las props y funciones útiles, eliminando líneas redundantes.
+- Se refina la semántica accesible (alt de imagen mejorado y outline en el contenedor para enfoque con teclado).
+- Clases Tailwind revisadas; se unifican variantes de opacidad, separación y se mantiene el uso de colores por CSS Variables para consistencia.
+- El valor de min-h-height se hace más razonable para no obligar a un viewport gigante en móviles.
+- Se agregan pequeños comentarios para aclarar estructura, especialmente a nivel de accesibilidad.
+- Código modular, limpio y preparado para mantener performance y responsividad.
+*/

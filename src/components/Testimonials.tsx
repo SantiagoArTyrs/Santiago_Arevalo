@@ -79,7 +79,7 @@ const Testimonials: FC<Props> = ({ lang = "es" }) => {
     <section
       id="testimonials"
       aria-labelledby="testimonials-title"
-      className="flex flex-col items-center justify-center min-h-[60vh] py-20 px-4 text-center"
+      className="exclusive-gradient relative flex flex-col items-center justify-center min-h-screen py-20 px-4 text-center overflow-hidden"
     >
       <motion.h2
         id="testimonials-title"

@@ -35,7 +35,7 @@ const Contact: FC<Props> = ({ lang }) => {
   return (
     <section
       id="contact"
-      className="flex flex-col items-center justify-center w-full py-20 px-4 text-center"
+      className="exclusive-gradient relative flex flex-col items-center justify-center min-h-screen py-20 px-4 text-center overflow-hidden"
     >
       {/* Título con gradiente y escala moderna */}
       <motion.h2

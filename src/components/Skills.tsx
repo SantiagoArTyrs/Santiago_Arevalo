@@ -69,9 +69,9 @@ const Skills: FC<Props> = ({ lang = "es" }) => {
 
   return (
     <section
-      id="skills"
-      className="relative flex flex-col items-center justify-center min-h-[55vh] py-20 px-4 sm:px-8 text-center"
-    >
+  id="skills"
+  className="exclusive-gradient relative flex flex-col items-center justify-center min-h-screen py-20 px-4 text-center overflow-hidden"
+>
       {/* Título principal */}
       <motion.h2
         className="text-4xl md:text-5xl font-extrabold mb-6 bg-clip-text text-transparent"

@@ -22,7 +22,7 @@ const Footer: FC<Props> = ({ lang }) => {
 
   return (
     <footer
-      className="relative w-full flex-shrink-0 py-10 px-6 md:px-20 overflow-hidden"
+      className="exclusive-gradient relative w-full flex-shrink-0 py-10 px-6 md:px-20 overflow-hidden"
       style={{
         // Fondo gradiente global, solo con variables CSS
         background: "linear-gradient(180deg, var(--bg-1), var(--bg-2))",

@@ -49,7 +49,7 @@ const Projects: FC<Props> = ({ lang = "es" }) => {
   return (
     <section
       id="projects"
-      className="relative flex flex-col items-center justify-center min-h-[60vh] py-20 px-4 sm:px-8 text-center overflow-x-hidden"
+      className="exclusive-gradient relative flex flex-col items-center justify-center min-h-screen py-20 px-4 text-center overflow-hidden"
     >
       <motion.h2
         id="projects-title"

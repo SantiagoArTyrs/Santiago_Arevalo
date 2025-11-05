@@ -69,7 +69,7 @@ const Hero: FC<Props> = ({ lang = "es" }) => {
   return (
     <section
       id="hero"
-      className="relative flex flex-col items-center justify-center min-h-screen py-20 px-4 text-center overflow-hidden"
+      className="exclusive-gradient relative flex flex-col items-center justify-center min-h-screen py-20 px-4 text-center overflow-hidden"
     >
       {/* Fondo animado gradiente */}
       <div

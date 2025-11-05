@@ -74,7 +74,6 @@ interface Props {
   lang?: Lang;
 }
 
-
 const Experience: FC<Props> = ({ lang = "es" }) => {
   const texts = TEXTS[lang];
   const reduce = useReducedMotion();
@@ -83,7 +82,7 @@ const Experience: FC<Props> = ({ lang = "es" }) => {
     <section
       id="experience"
       aria-labelledby="experience-title"
-      className="relative flex flex-col items-center justify-center min-h-[65vh] py-16 px-4 text-center"
+      className="exclusive-gradient relative flex flex-col items-center justify-center min-h-screen py-20 px-4 text-center overflow-hidden"
     >
       <motion.h2
         id="experience-title"
@@ -112,9 +111,10 @@ const Experience: FC<Props> = ({ lang = "es" }) => {
               key={item.title}
               className={`
                 relative flex flex-col lg:flex-row items-center w-full
-                ${i % 2 === 0
-                  ? "lg:self-start lg:justify-start lg:text-left"
-                  : "lg:self-end lg:justify-end lg:text-right"
+                ${
+                  i % 2 === 0
+                    ? "lg:self-start lg:justify-start lg:text-left"
+                    : "lg:self-end lg:justify-end lg:text-right"
                 }
                 lg:w-1/2
               `}
@@ -151,7 +151,9 @@ const Experience: FC<Props> = ({ lang = "es" }) => {
                   {item.place}
                 </p>
                 <p className="mb-1 text-[var(--muted)]">{item.desc}</p>
-                <p className="text-xs text-[var(--muted)] opacity-70">{item.date}</p>
+                <p className="text-xs text-[var(--muted)] opacity-70">
+                  {item.date}
+                </p>
               </div>
             </motion.li>
           ))}
@@ -162,5 +164,3 @@ const Experience: FC<Props> = ({ lang = "es" }) => {
 };
 
 export default Experience;
-
-

@@ -27,7 +27,7 @@
   --muted: #ffffff;
 }
 :root.light {
-  --main-title-gradient: linear-gradient(90deg, #ff5e62, #6a82fb, #2487ff);
+  --main-title-gradient: linear-gradient(80deg, #fb0004, #3153fc, #2487ff);
   --bg-1: #ffffff69;
   --bg-2: #2d57df;
   --accent-1: #ef3844;

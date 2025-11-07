@@ -116,7 +116,7 @@ const Experience: FC<Props> = ({ lang = "es" }) => {
                     ? "lg:self-start lg:justify-start lg:text-left"
                     : "lg:self-end lg:justify-end lg:text-right"
                 }
-                lg:w-1/2
+                lg:w-[40%]
               `}
               initial={{ opacity: 0, y: reduce ? 0 : 48 }}
               whileInView={{ opacity: 1, y: 0 }}

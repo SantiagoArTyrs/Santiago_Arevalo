@@ -85,7 +85,7 @@ const Hobbies: FC<Props> = ({ lang }) => {
             viewport={{ once: true }}
             className="
               flex flex-col items-center gap-2 px-4 py-5 sm:px-6 sm:py-6
-              rounded-2xl shadow-lg bg-white/80
+              rounded-2xl shadow-lg bg-white/10
               hover:scale-110 transition-transform duration-300
               focus-within:ring-2 focus-within:ring-[var(--accent-2)]
               outline-none

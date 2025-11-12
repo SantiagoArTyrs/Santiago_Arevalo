@@ -55,12 +55,12 @@ const Navbar: FC<Props> = ({ lang, setLang, toggleTheme, theme }) => {
         <div className="flex items-center gap-3">
           <div className="text-lg font-bold">&lt;Santiago Arevalo /&gt;</div>
           <div className="hidden md:flex gap-4 ml-6">
-            <a href="#hero" className="kicker hover:underline">{texts.home}</a>
-            <a href="#skills" className="kicker hover:underline">{texts.skills}</a>
-            <a href="#projects" className="kicker hover:underline">{texts.projects}</a>
-            <a href="#testimonials" className="kicker hover:underline">{texts.testimonials}</a>
-            <a href="#experience" className="kicker hover:underline">{texts.experience}</a>
-            <a href="#contact" className="kicker hover:underline">{texts.contact}</a>
+            <a href="#hero" className=" hover:underline">{texts.home}</a>
+            <a href="#skills" className=" hover:underline">{texts.skills}</a>
+            <a href="#projects" className="hover:underline">{texts.projects}</a>
+            <a href="#testimonials" className="hover:underline">{texts.testimonials}</a>
+            <a href="#experience" className="hover:underline">{texts.experience}</a>
+            <a href="#contact" className="hover:underline">{texts.contact}</a>
           </div>
         </div>
 

@@ -14,12 +14,14 @@ type Particle = {
 
 const COPY = {
   es: {
+    title: "¡Hola mundo!, soy:",
     handle: "TyrSAr",
     subtitle: "FullStack Developer",
     cv: "CV",
     projects: "Ver proyectos",
   },
   en: {
+    title: "Hello world!, I am:",
     handle: "TyrSAr",
     subtitle: "FullStack Developer",
     cv: "CV",
@@ -29,26 +31,63 @@ const COPY = {
 
 /* Pool caótico de líneas Matrix */
 const matrixCodeChunks = [
-    "for i in range(10): pass",
-  "def foo(): return 42",
+  // Python/Django Backend
+  "from django.db import models",
+  "def api_view(request): return JsonResponse()",
   "import sys, os",
-  "[ PY_ENGINE ]",
+  "async def fetch_data(): await db.query()",
   "try: x = 1/0",
   "if err: raise Exception()",
-  "lambda x: x**2",
-  "print('🐍 Python Mode')",
-  "class Matrix(Exception): pass",
-  "with open('core.py') as f:",
+  "class User(models.Model): pass",
+  "print('🐍 Django Backend Active')",
   "__name__ == '__main__'",
-  "async def hack(): await run()",
-  "from dataclasses import dataclass",
-  "def init(): print('0xDEAD')",
+
+  // JavaScript/TypeScript Frontend
+  "const App: FC = () => <Hero />",
+  "import { useState, useEffect } from 'react'",
+  "export default function Portfolio() {}",
+  "type Props = { lang: 'es' | 'en' }",
+  "npm run dev --turbo",
+  "interface IProject { id: string }",
+  "useState<string[]>([]);",
+  "⚛️ React + TypeScript",
+
+  // Vue 3
+  "const count = ref(0)",
+  "import { computed, reactive } from 'vue'",
+  "<script setup lang='ts'>",
+  "💚 Vue 3 Composition API",
+
+  // Unity/C# Game Dev
+  "void Update() { transform.Rotate(); }",
+  "public class Player : MonoBehaviour",
+  "using UnityEngine;",
+  "StartCoroutine(SpawnEnemy());",
+  "🎮 Unity 3D Game Engine",
+  "Vector3.Lerp(start, end, t);",
+  "Instantiate(prefab, position);",
+
+  // Tailwind CSS
+  "className='flex items-center gap-4'",
+  "bg-gradient-to-r from-accent-1",
+  "🎨 Tailwind CSS Utility-First",
+
+  // Git/DevOps
+  "git commit -m 'feat: add hero'",
+  "git push origin main",
+  "[ BUILD SUCCESS ]",
+  "[ DEPLOY READY ]",
+
+  // General Tech/Glitch
+  "[ FULLSTACK ENGINE ]",
+  "Σ = sum([...projects])",
   "NoneType not callable",
   "[ OK ]",
-  "@dataclass class Code:",
-  "while True: continue",
-  "if __debug__: pass",
-  "Σ = sum([1,2,3])",
+  "while True: code()",
+  "if __debug__: optimize()",
+  "0xC0FFEE // ☕ Coding Mode",
+  "lambda x: x**2",
+  "def init(): print('0xDEAD')",
 ];
 
 const Hero: FC<Props> = ({ lang = "es" }) => {
@@ -199,9 +238,7 @@ const Hero: FC<Props> = ({ lang = "es" }) => {
               <span className="w-3 h-3 rounded-full bg-red-400/70"></span>
               <span className="w-3 h-3 rounded-full bg-yellow-400/70"></span>
               <span className="w-3 h-3 rounded-full bg-green-400/70"></span>
-              <span className="ml-3 text-sm font-semibold tracking-widest uppercase text-[color:var(--muted)]">
-                portfolio.tsx
-              </span>
+              
             </div>
             {/* Terminal/code */}
             <div className="p-6 font-mono text-xs md:text-base text-neon-green whitespace-pre transition-all flex-1 flex flex-col justify-center max-h-[240px] md:min-h-[calc(40vh)] overflow-x-hidden">
@@ -213,10 +250,15 @@ const Hero: FC<Props> = ({ lang = "es" }) => {
                 ))
               ) : (
                 <>
-                  <div className="text-[var(--accent-1)] font-bold text-xl">
+                  <div className="text-neon-green font-bold text-2xl md:text-3xl mb-3">
+                    {texts.title}
+                  </div>
+                  <div className="text-[var(--accent-1)] font-bold text-xl md:text-2xl">
                     {texts.handle}
                   </div>
-                  <div>{texts.subtitle}</div>
+                  <div className="text-base md:text-lg mt-1">
+                    {texts.subtitle}
+                  </div>
                   <div>&nbsp;</div>
                 </>
               )}
@@ -275,7 +317,6 @@ const Hero: FC<Props> = ({ lang = "es" }) => {
                   backface-hidden
                   flex items-center justify-center
                 "
-                style={{ transform: "rotateY(180deg)" }}
               >
                 <img
                   src="/image_me.jpg"

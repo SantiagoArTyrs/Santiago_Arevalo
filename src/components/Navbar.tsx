@@ -18,6 +18,7 @@ const NAV_TEXTS = {
     skills: "Habilidades",
     projects: "Proyectos",
     testimonials: "Testimonios",
+    hobbies: "Hobbies",
     experience: "Experiencia",
     contact: "Contacto"
   },
@@ -27,6 +28,7 @@ const NAV_TEXTS = {
     projects: "Projects",
     testimonials: "Testimonials",
     experience: "Experience",
+    hobbies: "Hobbies",
     contact: "Contact"
   }
 } as const;
@@ -59,6 +61,7 @@ const Navbar: FC<Props> = ({ lang, setLang, toggleTheme, theme }) => {
             <a href="#skills" className=" hover:underline">{texts.skills}</a>
             <a href="#projects" className="hover:underline">{texts.projects}</a>
             <a href="#testimonials" className="hover:underline">{texts.testimonials}</a>
+            <a href="#hobbies" className="hover:underline">{texts.hobbies}</a>
             <a href="#experience" className="hover:underline">{texts.experience}</a>
             <a href="#contact" className="hover:underline">{texts.contact}</a>
           </div>
@@ -100,6 +103,7 @@ const Navbar: FC<Props> = ({ lang, setLang, toggleTheme, theme }) => {
             <a href="#projects" className="block" onClick={() => setOpen(false)}>{texts.projects}</a>
             <a href="#testimonials" className="block" onClick={() => setOpen(false)}>{texts.testimonials}</a>
             <a href="#experience" className="block" onClick={() => setOpen(false)}>{texts.experience}</a>
+            <a href="#hobbies" className="block" onClick={() => setOpen(false)}>{texts.hobbies}</a>
             <a href="#contact" className="block" onClick={() => setOpen(false)}>{texts.contact}</a>
           </nav>
         </div>

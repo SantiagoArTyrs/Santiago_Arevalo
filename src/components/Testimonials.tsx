@@ -29,8 +29,8 @@ const TEXTS: Record<Lang, Texts> = {
         img: "/img2.jpg",
       },
       {
-        name: "Ana Rodríguez",
-        role: "CTO en TechWave",
+        name: "Jose Burbano",
+        role: "Ingeniero de software",
         quote:
           "Un profesional apasionado y muy confiable. Entrega resultados impecables.",
         img: "/img3.jpg",
@@ -55,8 +55,8 @@ const TEXTS: Record<Lang, Texts> = {
         img: "/img2.jpg",
       },
       {
-        name: "Ana Rodríguez",
-        role: "CTO at TechWave",
+        name: "Jose Burbano",
+        role: "Software Engieneer",
         quote:
           "A passionate and reliable professional. Delivers impeccable results.",
         img: "/img3.jpg",

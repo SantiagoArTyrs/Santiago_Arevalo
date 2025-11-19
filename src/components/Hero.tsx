@@ -94,7 +94,13 @@ const Hero: FC<Props> = ({ lang = "es" }) => {
   const texts = COPY[lang];
   const shouldReduceMotion = useReducedMotion();
   const [particles, setParticles] = useState<Particle[]>([]);
-  const [typedCode, setTypedCode] = useState<any[]>([]);
+  type TypedLine = {
+    text: string;
+    className: string;
+  };
+
+  const [typedCode, setTypedCode] = useState<TypedLine[]>([]);
+
   const [showFinalLines, setShowFinalLines] = useState(false);
 
   // Partículas decorativas
@@ -238,7 +244,6 @@ const Hero: FC<Props> = ({ lang = "es" }) => {
               <span className="w-3 h-3 rounded-full bg-red-400/70"></span>
               <span className="w-3 h-3 rounded-full bg-yellow-400/70"></span>
               <span className="w-3 h-3 rounded-full bg-green-400/70"></span>
-              
             </div>
             {/* Terminal/code */}
             <div className="p-6 font-mono text-xs md:text-base text-neon-green whitespace-pre transition-all flex-1 flex flex-col justify-center max-h-[240px] md:min-h-[calc(40vh)] overflow-x-hidden">
